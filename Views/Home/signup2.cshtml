@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "SignUp";
+}
+
+        <script>
+            function func() {
+                var nameEntered = $('#nameEntered').val();
+
+
+                if (nameEntered == "") {
+                    alert("Please Enter Username");
+                    return;
+                }
+                $.getJSON('../../Home/checkSignUpForAlreadyExistsOrNot?userName=' + nameEntered, function (d) {
+                    if (d == true) {
+                        alert("Sorry! This Username Already Exists...");
+
+
+                    }
+
+                    else if (d == false) {
+                        alert("Username Is Available ... Proceed Please!");
+                        document.getElementById("buttonSubmit").style.visibility = "visible";
+                        document.getElementById("checkButton").style.visibility = "hidden";
+                        document.getElementById("nameEntered").readOnly = "readonly";
+                    }
+                })
+
+            }
+        </script>
+        
+        <!-- Page Content -->
+        <div class="container">
+            <!-- Page Heading/Breadcrumbs -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Sign Up
+                        <small></small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="../Home/Index">Home</a>
+                        </li>
+                        <li class="active">Sign Up</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+            <!-- Content Row -->
+            <div class="row">
+                <!-- Map Column -->
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3></h3>
+                            <form name="sentMessage" id="contactForm" method="post" action="../../Home/insertUser" novalidate>
+                                <div class="control-group form-group">
+                                    <div class="controls">
+                                        <label>Username:</label>
+                                        <input type="text" class="form-control" name="Username" id="nameEntered" required data-validation-required-message="Please Enter Your Username.">
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div>
+                                <div class="control-group form-group">
+                                    <div class="controls">
+                                        <label>Password:</label>
+                                        <input type="password" class="form-control" name="pass1" id="name" required data-validation-required-message="Please Enter Your Password.">
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div>
+                                <div class="control-group form-group">
+                                    <div class="controls">
+                                        <label>Confirm Password:</label>
+                                        <input type="password" class="form-control" name="Password" id="phone" required data-validation-required-message="Please Enter Confirm Password.">
+                                    </div>
+                                </div>
+
+
+
+                                <div id="success"></div>
+                                <!-- For success/fail messages -->
+
+                                <button type="submit" style="visibility:hidden" id="buttonSubmit" class="btn btn-primary">Sign Up</button>
+                            </form>
+                            <button id="checkButton" onclick="func()" class="btn btn-primary">Check Availability</button>
+                            <br>&nbsp;<br>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact Details Column -->
+                <div class="col-md-4">
+                    <div class="controls">
+                        <label>Use Facebook or Twitter Account For Registration</label>
+                        <br>&nbsp;<br>
+                        <p>
+                            <a href="https://www.facebook.com/"><img alt="Login With Facebook" width="250" height="50" src="~/img/fbu.png"></a>
+                            <br>&nbsp;<br>
+                            <a href="https://twitter.com/"><img alt="Login With Twitter" width="250" height="50" src="~/img/twu.png"></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>

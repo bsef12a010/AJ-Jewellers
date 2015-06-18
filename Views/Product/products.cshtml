@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Products";
+}
+@model List<EAD_Project_Bootstrap.Models.Product>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Product
+                <small>Showcase</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li class="active">Products</li>
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        @foreach (var a in Model)
+        {
+        <div class="col-md-4 portfolio-item">
+            <img src="~/img/Products/@a.Image" width="500" height="500" class="img-responsive" />
+            <h3>
+                AJ-@a.ProductID
+            </h3>
+            <p>@a.Overview</p>
+            <a class="btn btn-lg btn-primary" href="~/Product/details/@a.Id">View Details</a>
+        </div>
+        }
+    </div>
+        <hr>
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li>
+                        <a href="#">«</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                    <li>
+                        <a href="#">»</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>

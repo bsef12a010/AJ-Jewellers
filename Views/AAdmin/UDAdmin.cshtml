@@ -1,0 +1,101 @@
+﻿@model List<EAD_Project_Bootstrap.Models.User>
+
+<!-- Page Content -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Service Tabs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 id="d1" class="page-header">Admin List</h2>
+            </div>
+            <div class="col-lg-12">
+                <ul id="myTab" class="nav nav-tabs nav-justified">
+                    <li class="active">
+                        <a href="#service-one" data-toggle="tab"><i class="fa fa-paper-plane"></i> Active Admins</a>
+                    </li>
+                    <li class="">
+                        <a href="#service-two" data-toggle="tab"><i class="fa fa-mail-reply"></i> Inactive Admins</a>
+                    </li>
+                    @*<li class="">
+                            <a href="#service-three" data-toggle="tab"><i class="fa fa-home"    ></i> Service Three</a>
+                        </li>
+                        <li class="">
+                            <a href="#service-four" data-toggle="tab"><i class="fa fa-male"></i> Service Four</a>
+                        </li>*@
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active in" id="service-one">
+                        <br />
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="col-lg-1 ">Username</th>
+                                    <th class="col-lg-1 ">Password</th>
+                                    <th class="col-lg-1 ">Role</th>
+                                    <th class="col-lg-1 ">Activity</th>
+                                    <th class="col-lg-2 ">Delete Admin</th>
+                                    <th class="col-lg-2 ">Update Admin</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                @foreach (var a in Model)
+                                {
+                                    if (a.AddedOrNot == 1)
+                                    {
+                                        <tr>
+                                            <td>@a.Username</td>
+                                            <td>@a.Password</td>
+                                            <td>@a.Role</td>
+                                            <td>@a.AddedOrNot</td>
+                                            <td><a href="~/AAdmin/DeleteAdmin/@a.UserId" class="col-lg-6 btn btn-danger">Delete</a></td>
+                                            <td><a href="~/AAdmin/UpdateAdmin/@a.UserId" class="col-lg-6 btn btn-primary">Update</a></td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="service-two">
+
+                        <br />
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="col-lg-1 ">Username</th>
+                                    <th class="col-lg-1 ">Password</th>
+                                    <th class="col-lg-1 ">Role</th>
+                                    <th class="col-lg-1 ">Activity</th>
+                                    <th class="col-lg-2 ">Activate Admin</th>
+                                    <th class="col-lg-2 ">Delete Admin</th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var a in Model)
+                            {
+                                if (a.AddedOrNot == 0)
+                                {
+                                    <tr>
+                                        <td>@a.Username</td>
+                                        <td>@a.Password</td>
+                                        <td>@a.Role</td>
+                                        <td>@a.AddedOrNot</td>
+                                        <td><a href="~/AAdmin/ActivateAdmin/@a.UserId" class="col-lg-6 btn btn-success">Add</a></td>
+                                        <td><a href="~/AAdmin/DeleteAdmin/@a.UserId" class="col-lg-6 btn btn-danger">Delete</a></td>
+                                    </tr>
+                                }
+                            }
+
+
+
+
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
