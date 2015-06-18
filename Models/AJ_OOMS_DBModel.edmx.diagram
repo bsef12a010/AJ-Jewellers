@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cc2645de2aca4ffaa7c07accbf15e2a2" Name="Diagram1">
+        <EntityTypeShape EntityType="AJ_OOMS_DBModel.Client" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AJ_OOMS_DBModel.Message" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AJ_OOMS_DBModel.User" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="AJ_OOMS_DBModel.FK_Users_To_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="AJ_OOMS_DBModel.FK_Messages_To_Clients" />
+        <EntityTypeShape EntityType="AJ_OOMS_DBModel.Product" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="AJ_OOMS_DBModel.Order" Width="1.5" PointX="5.625" PointY="3" />
+        <EntityTypeShape EntityType="AJ_OOMS_DBModel.Order1" Width="1.5" PointX="8.625" PointY="3" />
+        <AssociationConnector Association="AJ_OOMS_DBModel.FK_Order_To_Product" />
+        <AssociationConnector Association="AJ_OOMS_DBModel.FK_Order_To_User" />
+        <AssociationConnector Association="AJ_OOMS_DBModel.FK_Orders_To_Product" />
+        <AssociationConnector Association="AJ_OOMS_DBModel.FK_Orders_To_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

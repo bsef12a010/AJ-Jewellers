@@ -1,0 +1,93 @@
+﻿<!-- Page Content -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Add Product
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <img src="~/img/Admin/dashboardb.png" alt="Comments" style="width:15px;height:15px;">  <a href="~/AHome/Index">Dashboard</a>
+                    </li>
+                    <li class="active">
+                        Add Product
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Map Column -->
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3></h3>
+                        <form name="sentMessage" enctype="multipart/form-data" id="contactForm" method="post" action="../../AProduct/insertProduct" novalidate>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>ProductID:</label>
+                                    <input type="text" class="form-control" name="ProductID" id="nameEntered" required data-validation-required-message="Please Enter Your Username.">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Category:</label>
+                                    <input type="text" class="form-control" name="Category" id="name" required data-validation-required-message="Please Enter Your Password.">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Price:</label>
+                                    <input type="text" class="form-control" name="Price" id="name" required data-validation-required-message="Please Enter Your Password.">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Description:</label>
+                                    <input type="text" class="form-control" name="Description" id="name" required data-validation-required-message="Please Enter Your Password.">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Overview:</label>
+                                    <input type="text" class="form-control" name="Overview" id="name" required data-validation-required-message="Please Enter Your Password.">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Availability:</label>
+                                    <select name="Availability" class="form-control">
+                                        <option value="In Stock">In Stock</option>
+                                        <option value="Out Of Stock">Out Of Stock</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    @*<label>Upload Image:</label>*@
+                                    @Html.Label("Upload Image:")
+                                    <input type="file" name="Picture" id="pass1">
+                                </div>
+                            </div>
+
+
+
+                            <div id="success"></div>
+                            <!-- For success/fail messages -->
+
+                            <button type="submit" id="buttonSubmit" class="btn btn-primary btn-block">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

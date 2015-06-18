@@ -1,0 +1,42 @@
+﻿<script>
+
+    $(document).ready(function () {
+
+        $('#checking').hide();
+
+        $('#b1').click(function () {
+
+            var e = $('#entity').val();
+            $('#checking').show();
+            $.getJSON("/Product/searchByEntity?ProductID=" + e, function (data) {
+                $('#checking').hide();
+                $("#t1 td").remove();
+                $.each(data, function (i, item) {
+                    $("#t1").append('<tr> <td >' + item.ProductID + '</td>' + '<td >' + item.Catagory + '</td>' + '<td >' + item.Price + '</td>' + '<td >' + item.Availability + '</td>' + '</tr>');
+                });
+            });
+        });
+    });
+</script>
+
+<div class="row">
+    <br>&nbsp;<br>
+    <br>&nbsp;<br>
+    <form class="navbar-form navbar-left pull-right" role="search">
+        <div class="form-group">
+            <input type="text" id="entity" class="form-control" placeholder="Search" />
+        </div>
+        <button id="b1" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br>&nbsp;<br>
+    <br>&nbsp;<br>
+    <br>&nbsp;<br>
+        <table class="table table-hover" id="t1">
+            <tr>
+                <th>ProductID</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Availability</th>
+            </tr>
+        </table>
+</div>

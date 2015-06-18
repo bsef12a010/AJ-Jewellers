@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AJ Jewellers - @ViewBag.Title</title>
+
+    <!-- Bootstrap -->
+    <link href="@Url.Content("/css/bootstrap.css")" rel="stylesheet">
+    <link href="@Url.Content("/css/modern-business.css")" rel="stylesheet">
+    
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+                <a href="@Url.Action("Index", "Home")" title="logo" class="navbar-brand">
+                    <img alt="Aj Jewellers" src="@Url.Content("~/img/logo.png")" width="250" height="50">
+                </a>
+            </div>
+            <div>
+                
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class ="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["UserNameSession"] != null)
+                    {
+                        <li><img alt="Cart" src="~/img/cart.png" width="30" height="30"></li>
+                        <li><a href="~/Cart/shoppingCart"><b>0 items</b></a></li>
+                    }
+                    @if( Session["UserNameSession"] != null)
+                    {
+                        
+                        <li id="portfolio" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="~/img/Admin/user.png" alt="Comments" style="width:15px;height:15px;">Welcome @Session["UserNameSession"] <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#"> <img src="~/img/Admin/userb.png" alt="Comments" style="width:15px;height:15px;"> Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#"> <img src="~/img/Admin/inbox.png" alt="Comments" style="width:15px;height:15px;"> Inbox</a>
+                                </li>
+                                <li>
+                                    <a href="#"> <img src="~/img/Admin/settings.png" alt="Comments" style="width:15px;height:15px;"> Settings</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="../../Home/Logout"> <img src="~/img/Admin/logout.png" alt="Comments" style="width:15px;height:15px;"> Log Out</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    @if(Session["UserNameSession"] == null)
+                    {
+                        <li><a href="~/Home/login">Login</a></li>
+                    }
+                    @if (Session["UserNameSession"] == null)
+                    {
+                        <li><a href="~/Home/signup">SignUp</a></li>
+                    }
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li id="home">
+                        @Html.ActionLink("Home", "Index", "Home")
+                    </li>
+                    <li id="about">
+                       @Html.ActionLink("About", "Index", "About")
+                    </li>
+                    <li id="services">
+                        @Html.ActionLink("Services", "Index", "Services")
+                    </li>
+                    <li id="contact">
+                        @Html.ActionLink("Contact", "Index", "Contact")
+                    </li>
+                    <li id="portfolio" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
+                        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                            <li><a href="#">Akela Wala</a></li>
+
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" href="#">Pendants</a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("For Men", "products", "Product")</li>
+                                    
+                                    <li>@Html.ActionLink("For Men", "products", "Product")</li>
+                                </ul>
+                            </li>
+                            
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" href="#">Bracelet</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">For Men</a></li>
+                                    <li><a href="#">For Women</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" href="#">Rings</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">For Men</a></li>
+                                    <li><a href="#">For Women</a></li>
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    <li id="blogpost">
+                        @Html.ActionLink("Blog", "Post", "Blog")
+                    </li>
+                    <li id="faq">
+                        @Html.ActionLink("FAQ", "Faq", "Other")
+                    </li>
+                </ul>
+                <a href="~/Product/search" class="btn btn-primary pull-right">Search</a>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <br>&nbsp;<br>
+
+    @RenderBody()
+
+    <div class="section-colored">
+        <div class="container">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <p><b>Copyright &copy; 2015  AJ-Jewellers (PVT) LTD. All Rights Reserved.</b></p>
+                </div>
+        </div>
+    </div>
+            <!-- /.container -->
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+            <script src="@Url.Content("/js/bootstrap.js")"></script>
+            <script src="@Url.Content("/js/modern-business.js")"></script>
+            <script>
+                $('.carousel').carousel({
+                    interval: 5000 //changes the speed
+                })
+            </script>
+
+</body>
+</html>

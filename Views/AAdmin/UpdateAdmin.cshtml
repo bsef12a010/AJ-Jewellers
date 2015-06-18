@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "Update Admin";
+}
+
+<script>
+            function func() {
+                var nameEntered = $('#nameEntered').val();
+
+
+                if (nameEntered == "") {
+                    alert("Please Enter Username");
+                    return;
+                }
+                $.getJSON('../../AAdmin/checkSignUpForAlreadyExistsOrNot?userName=' + nameEntered, function (d) {
+                    if (d == true) {
+                        alert("Sorry! This Username Is Not Available!");
+
+
+                    }
+
+                    else if (d == false) {
+                        alert("Username Is Available!");
+                        document.getElementById("buttonSubmit").style.visibility = "visible";
+                        document.getElementById("checkButton").style.visibility = "hidden";
+                        document.getElementById("nameEntered").readOnly = "readonly";
+                    }
+                })
+
+            }
+</script>
+
+@model List<EAD_Project_Bootstrap.Models.User>
+
+<!-- Page Content -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Update Admin
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <img src="~/img/Admin/dashboardb.png" alt="Comments" style="width:15px;height:15px;">  <a href="~/AHome/Index">Dashboard</a>
+                    </li>
+                    <li class="active">
+                        Update Admin
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Map Column -->
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3></h3>
+                        <form name="sentMessage" id="contactForm" method="post" action="../../AAdmin/updateExistingAdmin" novalidate>
+                            @foreach (var a in Model)
+                            {
+                                <div class="control-group form-group">
+                                    <div class="controls">
+                                        <label>Admin ID:</label>
+                                        <input type="text" readonly="readonly" class="form-control" name="UserID" value="@a.UserId">
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div>
+                                <div class="control-group form-group">
+                                    <div class="controls">
+                                        <label>Username:</label>
+                                        <input type="text" class="form-control" name="Username" value="@a.Username" required data-validation-required-message="Please Enter Your Username.">
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div>
+                                <div class="control-group form-group">
+                                    <div class="controls">
+                                        <label>Password:</label>
+                                        <input type="text" class="form-control" name="Password" value="@a.Password" required data-validation-required-message="Please Enter Your Password.">
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div>
+                                <div class="control-group form-group">
+                                    <div class="controls">
+                                        <label>AddedOrNot:</label>
+                                        <input type="text" class="form-control" name="AddedOrNot" value="@a.AddedOrNot" required data-validation-required-message="Please Enter 0 Or 1.">
+                                    </div>
+                                </div>
+                                <div class="control-group form-group">
+                                    <div class="controls">
+                                        <label>Role:</label>
+                                        <input type="text" class="form-control" name="Role" value="@a.Role" required data-validation-required-message="Please Enter Role.">
+                                    </div>
+                                </div>
+
+                                <div id="success"></div>
+                                <!-- For success/fail messages -->
+
+                                <button type="submit" style="visibility:hidden" id="buttonSubmit" class="btn btn-primary btn-block">Update</button>
+                            }
+                        </form>
+                        <button id="checkButton" onclick="func()" class="btn btn-primary">Check Availability</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
